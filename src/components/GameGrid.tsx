@@ -1,14 +1,17 @@
+import { SimpleGrid } from '@chakra-ui/react';
 import useGames from '../hooks/useGames';
+import GameCard from './GameCard';
 
 export interface GameResponse {
   count: number;
   next: string;
   previous: string;
-  results: GamesProps[];
+  results: Games[];
 }
-export interface GamesProps {
+export interface Games {
   id: number;
   name: string;
+  background_image: string;
 }
 
 const GameGrid = () => {
@@ -16,14 +19,16 @@ const GameGrid = () => {
 
   return (
     <>
-      <div>
-        {errmsg && <p>{errmsg}</p>}
-        <ul>
-          {games.map((game) => {
-            return <li key={game.id}>{game.name}</li>;
-          })}
-        </ul>
-      </div>
+      {errmsg && <p>{errmsg}</p>}
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        padding={10}
+        spacing={10}
+      >
+        {games.map((game) => {
+          return <GameCard key={game.id} game={game}></GameCard>;
+        })}
+      </SimpleGrid>
     </>
   );
 };

@@ -1,10 +1,10 @@
 import { CanceledError } from 'axios';
 import { useEffect, useState } from 'react';
-import { GameResponse, GamesProps } from '../components/GameGrid';
+import { GameResponse, Games } from '../components/GameGrid';
 import apiClient from '../services/api-client';
 
 const useGames = () => {
-  const [games, setGames] = useState<GamesProps[]>([]);
+  const [games, setGames] = useState<Games[]>([]);
   const [errmsg, setErrormsg] = useState('');
   useEffect(() => {
     //Add Abort Functionality
