@@ -25,7 +25,7 @@ export interface Games {
 
 const GameGrid = () => {
   const { data, errmsg, loading } = useGames();
-  const Skeletons = [1, 2, 3, 4, 5, 6];
+  const Skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
     <>
