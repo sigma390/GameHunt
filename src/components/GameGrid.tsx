@@ -24,7 +24,7 @@ export interface Games {
 }
 
 const GameGrid = () => {
-  const { games, errmsg, loading } = useGames();
+  const { data, errmsg, loading } = useGames();
   const Skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -41,7 +41,7 @@ const GameGrid = () => {
               <GameSkeleton key={skeleton} />
             </GameCardContainer>
           ))}
-        {games.map((game) => {
+        {data.map((game) => {
           return (
             <GameCardContainer>
               <GameCard key={game.id} game={game}></GameCard>
