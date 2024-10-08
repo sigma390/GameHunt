@@ -1,6 +1,5 @@
 import { CanceledError } from 'axios';
 import { useEffect, useState } from 'react';
-
 import apiClient from '../services/api-client';
 
 interface FetchResponse<T> {
@@ -32,17 +31,6 @@ const useData = <T>(endpnt: string) => {
       });
     //cleanup function
     return () => controller.abort();
-
-    //Another way
-    // const fetchGames = async () => {
-    //   try {
-    //     const res = await apiClient.get<GameResponse>('/games');
-    //     setGames(res.data.results);
-    //   } catch (err) {
-    //     setErrormsg((err as AxiosError).message);
-    //   }
-    // };
-    // fetchGames();
   }, []);
 
   return { data, errmsg, setErrormsg, loading };
