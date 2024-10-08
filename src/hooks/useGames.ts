@@ -6,17 +6,24 @@ import apiClient from '../services/api-client';
 const useGames = () => {
   const [games, setGames] = useState<Games[]>([]);
   const [errmsg, setErrormsg] = useState('');
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     //Add Abort Functionality
     const controller = new AbortController();
 
+    setLoading(true);
     //One way
     apiClient
       .get<GameResponse>('/games', { signal: controller.signal })
-      .then((res) => setGames(res.data.results))
+      .then((res) => {
+        setGames(res.data.results);
+        setLoading(false);
+      })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setErrormsg(err.message);
+        setLoading(false);
       });
     //cleanup function
     return () => controller.abort();
@@ -33,7 +40,7 @@ const useGames = () => {
     // fetchGames();
   }, []);
 
-  return { games, errmsg, setErrormsg, setGames };
+  return { games, errmsg, setErrormsg, setGames, loading };
 };
 
 export default useGames;
