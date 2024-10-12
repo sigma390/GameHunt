@@ -7,6 +7,7 @@ import GameSkeleton from './GameSkeleton';
 
 interface Props {
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 export interface GameResponse {
   count: number;
@@ -27,8 +28,8 @@ export interface Games {
   metacritic: number;
 }
 
-const GameGrid = ({ selectedGenre }: Props) => {
-  const { data, errmsg, loading } = useGames(selectedGenre);
+const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
+  const { data, errmsg, loading } = useGames(selectedGenre, selectedPlatform);
   const Skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
