@@ -1,5 +1,7 @@
 import { HStack, Switch, Text, useColorMode } from '@chakra-ui/react';
+import { CiLight } from 'react-icons/ci';
 
+import { MdOutlineDarkMode } from 'react-icons/md';
 const ColorModeSwitch = () => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
@@ -9,8 +11,13 @@ const ColorModeSwitch = () => {
         isChecked={colorMode === 'dark'}
         onChange={toggleColorMode}
       />
-
-      <Text>Dark Mode</Text>
+      {colorMode === 'light' ? (
+        <CiLight />
+      ) : (
+        <Text className=' text-xl'>
+          <MdOutlineDarkMode />
+        </Text>
+      )}
     </HStack>
   );
 };
