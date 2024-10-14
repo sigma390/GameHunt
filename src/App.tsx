@@ -3,6 +3,7 @@ import { Grid, GridItem, HStack, Show } from '@chakra-ui/react';
 import { useState } from 'react';
 import './App.css';
 import GameGrid, { Platform } from './components/GameGrid';
+import GameHeading from './components/GameHeading';
 import GenreList from './components/GenreList';
 import NavBar from './components/NavBar';
 import PlatformList from './components/PlatformList';
@@ -48,7 +49,8 @@ function App() {
         </Show>
 
         <GridItem area='main'>
-          <HStack>
+          <GameHeading gameQuery={gameQuery} />
+          <HStack marginLeft={10}>
             <PlatformList
               selectedPlatform={gameQuery.platform}
               onSelectplatform={(platform) =>
