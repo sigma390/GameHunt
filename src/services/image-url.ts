@@ -1,5 +1,7 @@
+import img from '../assets/default-placeholder.png';
+
 const getCroppedImageUrl = (url: string) => {
-  if (!url) return '';
+  if (!url) return img;
 
   const target = 'media/';
   //Goin to that Index
