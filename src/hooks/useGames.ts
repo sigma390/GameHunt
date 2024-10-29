@@ -27,25 +27,25 @@
 
 //========================= >New WAY<==================================
 // export default useGames;
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import { Games } from '../components/GameGrid';
 import { FetchResponse } from '../services/api-client';
 import gameService from '../services/gameService';
 
-const useGames = (gameQuery: GameQuery) => {
-  const qry = useQuery<FetchResponse<Games>>({
-    queryKey: ['games', gameQuery],
-    queryFn: () =>
-      gameService.getAll({
-        genres: gameQuery.genre?.id,
-        parent_platforms: gameQuery.platform?.id,
-        ordering: gameQuery.sortOrder,
-        search: gameQuery.searchTxt,
-      }),
-  });
-  return qry;
-};
+// const useGames = (gameQuery: GameQuery) => {
+//   const qry = useQuery<FetchResponse<Games>>({
+//     queryKey: ['games', gameQuery],
+//     queryFn: () =>
+//       gameService.getAll({
+//         genres: gameQuery.genre?.id,
+//         parent_platforms: gameQuery.platform?.id,
+//         ordering: gameQuery.sortOrder,
+//         search: gameQuery.searchTxt,
+//       }),
+//   });
+//   return qry;
+// };
 
 /*
 other Way is  
@@ -63,12 +63,24 @@ useQuery({
         search: gameQuery.searchTxt,
   })
 })
-
-
-
-
-
-
 */
+
+//===================> Implementing Infinite Query <===================
+const useGames = (gameQuery: GameQuery) => {
+  return useInfiniteQuery<FetchResponse<Games>>({
+    queryKey: ['games', gameQuery],
+    queryFn: ({ pageParam = 1 }) =>
+      gameService.getAll({
+        genres: gameQuery.genre?.id,
+        parent_platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchTxt,
+        page: pageParam,
+      }),
+    getNextPageParam: (lastPage, allPages) =>
+      lastPage.next ? allPages.length + 1 : undefined,
+    initialPageParam: 1, // Add this line to specify the initial page parameter
+  });
+};
 
 export default useGames;
