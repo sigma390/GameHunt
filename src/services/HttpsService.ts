@@ -7,9 +7,9 @@ class HttpsService<T> {
   }
 
   //get All
-  getAll = async () => {
+  getAll = async (params?: unknown) => {
     return axiosInstance
-      .get<T[]>(this.endpt)
+      .get<T[]>(this.endpt, { params })
       .then((res) => res.data)
       .catch((err) => err.message);
   };

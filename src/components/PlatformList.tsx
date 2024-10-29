@@ -2,7 +2,7 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 
 import { BsChevronDown } from 'react-icons/bs';
 import usePlatform from '../hooks/usePlatform';
-import { Platform } from './GameGrid';
+import { Platform } from '../services/platformService';
 
 interface Props {
   onSelectplatform: (platform: Platform) => void;

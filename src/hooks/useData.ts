@@ -10,7 +10,7 @@ export interface FetchResponse<T> {
 const useData = <T>(
   endpnt: string,
   requestConfig?: AxiosRequestConfig,
-  deps?: any[]
+  deps?: unknown[]
 ) => {
   const [data, setData] = useState<T[]>([]);
   const [errmsg, setErrormsg] = useState('');
