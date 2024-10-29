@@ -31,7 +31,7 @@ import { useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import { Games } from '../components/GameGrid';
 import gameService from '../services/gameService';
-import { FetchResponse } from './useData';
+import { FetchResponse } from '../services/api-client';
 
 const useGames = (gameQuery: GameQuery) => {
   const qry = useQuery<FetchResponse<Games>>({

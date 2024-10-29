@@ -1,4 +1,4 @@
-import { FetchResponse } from '../hooks/useData';
+import { FetchResponse } from './api-client';
 import HttpsService from './HttpsService';
 export interface Genre {
   id: number;

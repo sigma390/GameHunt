@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import platforms from '../data/platforms';
 import platformService, { Platform } from '../services/platformService';
-import { FetchResponse } from './useData';
+import { FetchResponse } from '../services/api-client';
 
 const usePlatform = () => {
   // return useData<Platform>('/platforms/lists/parents');

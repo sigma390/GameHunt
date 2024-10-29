@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import genres from '../data/genres';
 import genreService, { Genre } from '../services/genreService';
-import { FetchResponse } from './useData';
+import { FetchResponse } from '../services/api-client';
 
 const useGenre = () => {
   const query = useQuery<FetchResponse<Genre>, Error>({
