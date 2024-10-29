@@ -6,10 +6,13 @@ import { Platform } from '../services/platformService';
 
 interface Props {
   onSelectplatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 }
-const PlatformList = ({ onSelectplatform, selectedPlatform }: Props) => {
+const PlatformList = ({ onSelectplatform, selectedPlatformId }: Props) => {
   const { data } = usePlatform();
+  const selectedPlatform = data?.results.find(
+    (p) => p.id === selectedPlatformId
+  );
   console.log(data);
   return (
     <Menu>

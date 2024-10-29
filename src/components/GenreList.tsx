@@ -14,10 +14,10 @@ import GenreSkeelton from './GenreSkeelton';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
   //   const { genres } = useGenre();
   const { data, isLoading } = useGenre();
   console.log(data);
@@ -44,7 +44,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
-                fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+                fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
                 variant={'link'}
                 marginLeft={3}
                 whiteSpace={'normal'}
