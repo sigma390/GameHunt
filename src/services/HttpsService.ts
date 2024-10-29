@@ -15,4 +15,18 @@ class HttpsService<T> {
   };
 }
 
+/*
+
+other way arounf Instead Parameters 
+use Config : Axios
+
+getAll = async (config:AxiosRequestConfig) => {
+    return axiosInstance
+      .get<T[]>(this.endpt, config) 
+      .then((res) => res.data)
+      .catch((err) => err.message);
+  };
+
+*/
+
 export default HttpsService;

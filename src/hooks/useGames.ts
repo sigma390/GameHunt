@@ -30,8 +30,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import { Games } from '../components/GameGrid';
-import gameService from '../services/gameService';
 import { FetchResponse } from '../services/api-client';
+import gameService from '../services/gameService';
 
 const useGames = (gameQuery: GameQuery) => {
   const qry = useQuery<FetchResponse<Games>>({
@@ -46,5 +46,29 @@ const useGames = (gameQuery: GameQuery) => {
   });
   return qry;
 };
+
+/*
+other Way is  
+But we have to Create apiClint everytime
+
+
+const apiClinet = new ApiClinet<Games>();
+
+useQuery({
+  queryKey: ['games', gameQuery],
+  queryFn: () => apiClinet.getAll({
+  genres: gameQuery.genre?.id,
+        parent_platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchTxt,
+  })
+})
+
+
+
+
+
+
+*/
 
 export default useGames;
