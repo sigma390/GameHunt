@@ -28,10 +28,11 @@
 //========================= >New WAY<==================================
 // export default useGames;
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { GameQuery } from '../App';
+
 import { Games } from '../components/GameGrid';
 import { FetchResponse } from '../services/api-client';
 import gameService from '../services/gameService';
+import useGameQueryStore from '../store';
 
 // const useGames = (gameQuery: GameQuery) => {
 //   const qry = useQuery<FetchResponse<Games>>({
@@ -66,7 +67,8 @@ useQuery({
 */
 
 //===================> Implementing Infinite Query <===================
-const useGames = (gameQuery: GameQuery) => {
+const useGames = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
   return useInfiniteQuery<FetchResponse<Games>>({
     queryKey: ['games', gameQuery],
     queryFn: ({ pageParam = 1 }) =>

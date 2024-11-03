@@ -1,7 +1,7 @@
 import { Box, Button, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import { FaAngleDoubleDown } from 'react-icons/fa';
-import { GameQuery } from '../App';
+
 import useGames from '../hooks/useGames';
 import { Platform } from '../services/platformService';
 import GameCard from './GameCard';
@@ -13,9 +13,6 @@ import GameSkeleton from './GameSkeleton';
 //   selectedPlatform: Platform | null;
 // }
 
-interface Props {
-  gameQuery: GameQuery;
-}
 export interface GameResponse {
   count: number;
   next: string;
@@ -31,7 +28,7 @@ export interface Games {
   metacritic: number;
 }
 
-const GameGrid = ({ gameQuery }: Props) => {
+const GameGrid = () => {
   const {
     data,
     isError,
@@ -39,7 +36,7 @@ const GameGrid = ({ gameQuery }: Props) => {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-  } = useGames(gameQuery);
+  } = useGames();
   const Skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
