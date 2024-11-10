@@ -1,11 +1,6 @@
-import { FetchResponse } from './api-client';
+import { FetchResponse } from '../entities/FetchResponse';
+import { Platform } from '../entities/Platform';
 import HttpsService from './HttpsService';
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
 
 export default new HttpsService<FetchResponse<Platform>>(
   '/platforms/lists/parents'

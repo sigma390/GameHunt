@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
 import platforms from '../data/platforms';
-import { FetchResponse } from '../services/api-client';
-import platformService, { Platform } from '../services/platformService';
+import { FetchResponse } from '../entities/FetchResponse';
+import { Platform } from '../entities/Platform';
+import platformService from '../services/platformService';
 
 const usePlatform = () => {
   // return useData<Platform>('/platforms/lists/parents');

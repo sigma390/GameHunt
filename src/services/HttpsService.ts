@@ -13,6 +13,10 @@ class HttpsService<T> {
       .then((res) => res.data)
       .catch((err) => err.message);
   };
+  //get Single Object
+  get = async (id: string | number) => {
+    return axiosInstance.get<T>(this.endpt + '/' + id).then((res) => res.data);
+  };
 }
 
 /*

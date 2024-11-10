@@ -1,5 +1,5 @@
-import { Games } from '../components/GameGrid';
-import { FetchResponse } from './api-client';
+import { FetchResponse } from '../entities/FetchResponse';
+import { Games } from '../entities/Games';
 
 import HttpsService from './HttpsService';
 

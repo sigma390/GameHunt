@@ -29,8 +29,8 @@
 // export default useGames;
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-import { Games } from '../components/GameGrid';
-import { FetchResponse } from '../services/api-client';
+import { FetchResponse } from '../entities/FetchResponse';
+import { Games } from '../entities/Games';
 import gameService from '../services/gameService';
 import useGameQueryStore from '../store';
 

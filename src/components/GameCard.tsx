@@ -1,14 +1,18 @@
 import { Card, CardBody, Heading, HStack, Image } from '@chakra-ui/react';
+
+import { Link } from 'react-router-dom';
+import { GameProps } from '../entities/GameProps';
 import getCroppedImageUrl from '../services/image-url';
 import CriticScore from './CriticScore';
-import { Games } from './GameGrid';
 import PlatformIconList from './PlatformIconList';
 
-interface GameProps {
-  game: Games;
-}
-
 const GameCard = ({ game }: GameProps) => {
+  // const navigate = useNavigate();
+  // const handleClick = (id: number) => {
+  //   console.log(id);
+  //   navigate(`/games/${id}`);
+  // };
+
   return (
     <Card>
       <Image src={getCroppedImageUrl(game.background_image)} alt={game.name} />
@@ -19,7 +23,9 @@ const GameCard = ({ game }: GameProps) => {
           />
           <CriticScore score={game.metacritic} />
         </HStack>
-        <Heading fontSize={'2xl'}>{game.name}</Heading>
+        <Heading fontSize={'2xl'}>
+          <Link to={'/games/' + game.id}>{game.name}</Link>
+        </Heading>
       </CardBody>
     </Card>
   );

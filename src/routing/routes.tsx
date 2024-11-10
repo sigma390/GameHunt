@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { default as Homepage } from '../pages/HomePage';
 import Layout from '../pages/Layout';
 
-import Game from '../components/Game';
+import { default as GameDetails } from '../components/GameDetails';
 import ErrorPage from '../pages/ErrorPage';
 
 const router = createBrowserRouter([
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       },
       {
         path: `games/:id`,
-        element: <Game />,
+        element: <GameDetails />,
       },
     ],
   },

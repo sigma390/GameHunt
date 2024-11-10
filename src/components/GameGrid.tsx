@@ -3,31 +3,9 @@ import React from 'react';
 import { FaAngleDoubleDown } from 'react-icons/fa';
 
 import useGames from '../hooks/useGames';
-import { Platform } from '../services/platformService';
 import GameCard from './GameCard';
 import GameCardContainer from './GameCardContainer';
 import GameSkeleton from './GameSkeleton';
-//==============> OLD ways<=============
-// interface Props {
-//   selectedGenre: Genre | null;
-//   selectedPlatform: Platform | null;
-// }
-
-export interface GameResponse {
-  count: number;
-  next: string;
-  previous: string;
-  results: Games[];
-}
-
-export interface Games {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-}
-
 const GameGrid = () => {
   const {
     data,
