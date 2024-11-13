@@ -4,10 +4,10 @@ import ScreenShot from '../entities/ScreenShot';
 import useScreenShots from '../hooks/useScreenshots';
 
 interface Props {
-  gameId: number;
+  gameId: number | undefined;
 }
 const GameScreenShots = ({ gameId }: Props) => {
-  const { data, isLoading, error } = useScreenShots(gameId);
+  const { data, isLoading, error } = useScreenShots(gameId!);
 
   if (isLoading) return null;
 

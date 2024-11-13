@@ -1,11 +1,11 @@
 import useTrailers from '../hooks/useTrailers';
 
 interface Props {
-  gameId: number;
+  gameId: number | undefined;
 }
 
 const GameTrailer = ({ gameId }: Props) => {
-  const { data, error, isLoading } = useTrailers(gameId);
+  const { data, error, isLoading } = useTrailers(gameId!);
 
   // Render nothing if loading or if there's an error
   if (isLoading || error) return null;
