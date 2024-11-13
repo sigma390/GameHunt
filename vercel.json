@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/games/:id",
-      "destination": "/api/games/[id]"
+      "destination": "/games/[id]"
     }
   ],
   "build": {
