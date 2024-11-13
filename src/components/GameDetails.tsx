@@ -10,7 +10,7 @@ import GameTrailer from './GameTrailer';
 const GameDetails = () => {
   const { id } = useParams();
   const { data: game, isLoading } = useGame(parseInt(id!));
-
+  //chnaged
   return (
     <>
       {isLoading && <Text>Loading...</Text>}
