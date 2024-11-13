@@ -18,8 +18,8 @@ const GameDetails = () => {
 
       <ExpandableText children={game?.description_raw || ''} />
       <GameAttributes game={game!} />
-      <GameTrailer gameId={game?.id || 0} />
-      <GameScreenShots gameId={game?.id || 0} />
+      <GameTrailer gameId={game?.id} />
+      <GameScreenShots gameId={game?.id} />
     </>
   );
 };
